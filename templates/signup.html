@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account — AI Personal Finance Agent & Budget Tracker</title>
+    <meta name="description" content="Sign up for your AI Personal Finance Agent to track expenses, manage budgets, and get smart financial insights.">
+    <link rel="canonical" href="https://finance-agent-gamma-seven.vercel.app/signup">
+
+    <!-- Favicon & Apple Touch Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn-icons-png.flaticon.com/512/2953/2953363.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/512/2953/2953363.png">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="Create Account — AI Personal Finance Agent & Budget Tracker">
+    <meta property="og:description" content="Sign up for your AI Personal Finance Agent to track expenses, manage budgets, and get smart financial insights.">
+    <meta property="og:url" content="https://finance-agent-gamma-seven.vercel.app/signup">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/2953/2953363.png">
+
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Create Account — AI Personal Finance Agent">
+    <meta name="twitter:description" content="Sign up for your AI Personal Finance Agent to track expenses and manage your budget.">
+    <meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/2953/2953363.png">
+
+    <!-- PWA & Mobile Web App Meta Tags -->
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FinanceAgent">
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://finance-agent-gamma-seven.vercel.app/signup",
+          "url": "https://finance-agent-gamma-seven.vercel.app/signup",
+          "name": "Create Account — AI Personal Finance Agent & Budget Tracker",
+          "description": "Sign up page for AI Personal Finance Agent"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://finance-agent-gamma-seven.vercel.app/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Create Account",
+              "item": "https://finance-agent-gamma-seven.vercel.app/signup"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/static/js/theme.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated-bg {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .dark .animated-bg {
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .card-float { animation: float 6s ease-in-out infinite; }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 30, 50, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .dark .orb { opacity: 0.15; }
+
+        @media print {
+            .orb, .animated-bg, button, footer { display: none !important; }
+            body { background: white !important; color: black !important; }
+        }
+    </style>
+</head>
+
+<body class="animated-bg min-h-screen flex flex-col items-center justify-between p-4 relative overflow-x-hidden">
+    <!-- Decorative orbs -->
+    <div class="orb w-72 h-72 bg-purple-400 top-10 -left-20" style="position:fixed;"></div>
+    <div class="orb w-96 h-96 bg-indigo-400 -bottom-20 -right-20" style="position:fixed;"></div>
+
+    <!-- Theme toggle -->
+    <button onclick="toggleTheme()" aria-label="Toggle Dark and Light Mode"
+        class="fixed top-6 right-6 z-50 p-3 bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 rounded-full backdrop-blur transition transform hover:scale-110 active:scale-95 ring-2 ring-white/10 shadow-lg">
+        <svg class="w-5 h-5 hidden dark:block text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+        </svg>
+        <svg class="w-5 h-5 block dark:hidden text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        </svg>
+    </button>
+
+    <main class="card-float fade-in-up w-full max-w-md my-auto pt-6">
+        <!-- Logo / Brand -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mb-4 shadow-lg">
+                <span class="text-3xl" role="img" aria-label="Money Bag">💰</span>
+            </div>
+            <h1 class="text-3xl font-extrabold text-white drop-shadow-md">Create Account</h1>
+            <p class="text-white/70 mt-2 text-sm">Start managing your finances smartly</p>
+        </div>
+
+        <!-- Sign Up Card -->
+        <div class="glass-card rounded-3xl p-8 shadow-2xl">
+            <form id="signupForm" class="space-y-5">
+                <div>
+                    <label for="name" class="block text-white/90 text-sm font-semibold mb-2">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required aria-required="true"
+                        class="input-field w-full px-4 py-3.5 rounded-xl bg-white/10 dark:bg-white/5 text-white placeholder-white/40 border border-white/20 focus:border-indigo-400 focus:outline-none text-sm">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-white/90 text-sm font-semibold mb-2">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required aria-required="true"
+                        class="input-field w-full px-4 py-3.5 rounded-xl bg-white/10 dark:bg-white/5 text-white placeholder-white/40 border border-white/20 focus:border-indigo-400 focus:outline-none text-sm">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-white/90 text-sm font-semibold mb-2">Password</label>
+                    <input type="password" id="password" placeholder="Min 6 characters" required minlength="6" aria-required="true"
+                        class="input-field w-full px-4 py-3.5 rounded-xl bg-white/10 dark:bg-white/5 text-white placeholder-white/40 border border-white/20 focus:border-indigo-400 focus:outline-none text-sm">
+                </div>
+
+                <div>
+                    <label for="confirmPassword" class="block text-white/90 text-sm font-semibold mb-2">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Re-enter password" required minlength="6" aria-required="true"
+                        class="input-field w-full px-4 py-3.5 rounded-xl bg-white/10 dark:bg-white/5 text-white placeholder-white/40 border border-white/20 focus:border-indigo-400 focus:outline-none text-sm">
+                </div>
+
+                <!-- Error message -->
+                <div id="errorMsg" class="hidden p-3 rounded-xl bg-red-500/20 border border-red-400/30 text-red-200 text-sm text-center" role="alert"></div>
+
+                <button type="submit" id="submitBtn" aria-label="Create New Account"
+                    class="btn-gradient w-full py-3.5 rounded-xl text-white font-bold text-sm tracking-wide shadow-lg">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-white/60 text-sm">
+                    Already have an account?
+                    <a href="/login" class="text-indigo-300 hover:text-white font-semibold transition-colors underline underline-offset-4">Sign In</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Links -->
+    <footer class="w-full text-center text-white/60 text-xs py-4 space-x-4">
+        <a href="/privacy" class="hover:text-white transition">Privacy Policy</a>
+        <span>&bull;</span>
+        <a href="/terms" class="hover:text-white transition">Terms & Conditions</a>
+        <span>&bull;</span>
+        <a href="/about" class="hover:text-white transition">About & Contact</a>
+    </footer>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const submitBtn = document.getElementById('submitBtn');
+
+            errorMsg.classList.add('hidden');
+
+            if (password !== confirmPassword) {
+                errorMsg.textContent = 'Passwords do not match';
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            if (password.length < 6) {
+                errorMsg.textContent = 'Password must be at least 6 characters';
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            submitBtn.textContent = 'Creating Account...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    errorMsg.textContent = data.error || 'Failed to create account';
+                    errorMsg.classList.remove('hidden');
+                    submitBtn.textContent = 'Create Account';
+                    submitBtn.disabled = false;
+                }
+            } catch (err) {
+                errorMsg.textContent = 'Something went wrong. Please try again.';
+                errorMsg.classList.remove('hidden');
+                submitBtn.textContent = 'Create Account';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>
