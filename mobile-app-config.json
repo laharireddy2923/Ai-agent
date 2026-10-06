@@ -2,7 +2,7 @@
   "name": "AI Personal Finance Agent",
   "package_id": "com.financeagent.app",
   "version": "1.0.0",
-  "start_url": "http://192.168.17.186:5001",
+  "start_url": "http://10.10.10.127:5005",
   "icon": "https://cdn-icons-png.flaticon.com/512/2953/2953363.png",
   "theme_color": "#667eea",
   "background_color": "#667eea",

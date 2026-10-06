@@ -21,7 +21,7 @@
 
     <!-- Twitter Card Metadata -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sign In — AI Personal Finance Agent">
+    <meta name="twitter:title" content="Sign In — AI Personal Finance Agent & Budget Tracker">
     <meta name="twitter:description" content="Sign in to your AI Personal Finance Agent to track expenses and manage your budget.">
     <meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/2953/2953363.png">
 
@@ -33,39 +33,42 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="FinanceAgent">
 
-    <!-- JSON-LD Structured Data Schema -->
+    <!-- Validated JSON-LD Structured Data Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebPage",
-          "@id": "https://finance-agent-gamma-seven.vercel.app/login",
-          "url": "https://finance-agent-gamma-seven.vercel.app/login",
-          "name": "Sign In — AI Personal Finance Agent & Budget Tracker",
-          "description": "Sign in page for AI Personal Finance Agent"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://finance-agent-gamma-seven.vercel.app/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Sign In",
-              "item": "https://finance-agent-gamma-seven.vercel.app/login"
-            }
-          ]
-        }
-      ]
+      "@type": "WebPage",
+      "@id": "https://finance-agent-gamma-seven.vercel.app/login",
+      "url": "https://finance-agent-gamma-seven.vercel.app/login",
+      "name": "Sign In — AI Personal Finance Agent & Budget Tracker",
+      "description": "Sign in page for AI Personal Finance Agent",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "AI Personal Finance Agent",
+        "url": "https://finance-agent-gamma-seven.vercel.app/"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://finance-agent-gamma-seven.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sign In",
+            "item": "https://finance-agent-gamma-seven.vercel.app/login"
+          }
+        ]
+      }
     }
     </script>
 
+    <!-- Non-render blocking scripts with defer -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/static/js/theme.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -190,8 +193,9 @@
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mb-4 shadow-lg">
                 <span class="text-3xl" role="img" aria-label="Money Bag">💰</span>
             </div>
-            <h1 class="text-3xl font-extrabold text-white drop-shadow-md">Welcome Back</h1>
-            <p class="text-white/70 mt-2 text-sm">Sign in to your AI Finance Dashboard</p>
+            <!-- Title and H1 Keyword Alignment -->
+            <h1 class="text-3xl font-extrabold text-white drop-shadow-md">Sign In — AI Personal Finance Agent & Budget Tracker</h1>
+            <p class="text-white/70 mt-2 text-sm">Sign in to your personal finance dashboard</p>
         </div>
 
         <!-- Sign In Card -->
@@ -238,6 +242,11 @@
                     class="btn-gradient w-full py-3.5 rounded-xl text-white font-bold text-sm tracking-wide shadow-lg">
                     Sign In
                 </button>
+
+                <a href="/demo" aria-label="1-Click Instant Demo Login"
+                    class="w-full block text-center py-3.5 mt-3 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl transition backdrop-blur border border-white/30 shadow-md">
+                    ⚡ Try Demo Mode (1-Click Instant Access)
+                </a>
             </form>
 
             <div class="mt-6">
@@ -256,21 +265,22 @@
             We use essential session cookies to secure your sign-in. Read our <a href="/privacy" class="text-indigo-400 underline">Privacy Policy</a>.
         </p>
         <div class="flex gap-2">
-            <button onclick="acceptCookies()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">Accept</button>
+            <button onclick="acceptCookies()" aria-label="Accept essential cookies" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">Accept</button>
         </div>
     </div>
 
-    <!-- Footer Links -->
-    <footer class="w-full text-center text-white/60 text-xs py-4 space-x-4">
-        <a href="/privacy" class="hover:text-white transition">Privacy Policy</a>
-        <span>&bull;</span>
-        <a href="/terms" class="hover:text-white transition">Terms & Conditions</a>
-        <span>&bull;</span>
-        <a href="/about" class="hover:text-white transition">About & Contact</a>
+    <!-- Navigation Landmark & Footer Links -->
+    <footer role="contentinfo" class="w-full text-center text-white/60 text-xs py-4">
+        <nav aria-label="Footer Navigation" class="inline-flex space-x-4">
+            <a href="/privacy" class="hover:text-white transition">Privacy Policy</a>
+            <span>&bull;</span>
+            <a href="/terms" class="hover:text-white transition">Terms & Conditions</a>
+            <span>&bull;</span>
+            <a href="/about" class="hover:text-white transition">About & Contact</a>
+        </nav>
     </footer>
 
     <script>
-        // Cookie Consent Banner Check
         if (!localStorage.getItem('cookieAccepted')) {
             document.getElementById('cookieBanner').classList.remove('hidden');
         }

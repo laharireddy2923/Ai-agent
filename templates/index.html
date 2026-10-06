@@ -21,7 +21,7 @@
 
     <!-- Twitter Card Metadata -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dashboard — AI Personal Finance Agent">
+    <meta name="twitter:title" content="Dashboard — AI Personal Finance Agent & Budget Tracker">
     <meta name="twitter:description" content="Personalized AI finance dashboard to track spending and manage budgets.">
     <meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/2953/2953363.png">
 
@@ -33,7 +33,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="FinanceAgent">
 
-    <!-- JSON-LD Structured Data Schema -->
+    <!-- Validated JSON-LD Structured Data Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -43,7 +43,13 @@
           "@id": "https://finance-agent-gamma-seven.vercel.app/",
           "url": "https://finance-agent-gamma-seven.vercel.app/",
           "name": "Dashboard — AI Personal Finance Agent & Budget Tracker",
-          "description": "Personal finance dashboard and expense manager"
+          "description": "Personal finance dashboard and expense manager",
+          "inLanguage": "en-US",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "AI Personal Finance Agent",
+            "url": "https://finance-agent-gamma-seven.vercel.app/"
+          }
         },
         {
           "@type": "SoftwareApplication",
@@ -71,7 +77,7 @@
     }
     </script>
 
-    <!-- Tailwind CDN -->
+    <!-- Tailwind CDN with defer -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -84,7 +90,7 @@
                     }
                 }
             }
-        }
+        };
     </script>
 
     <!-- Google Fonts -->
@@ -132,7 +138,8 @@
                         <span class="text-xl" role="img" aria-label="Money Bag">💰</span>
                     </div>
                     <div>
-                        <h1 class="text-lg font-bold text-gray-900 dark:text-white leading-tight">AI Finance Agent</h1>
+                        <!-- Title & H1 Keyword Alignment -->
+                        <h1 class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Dashboard — AI Personal Finance Agent & Budget Tracker</h1>
                         <p class="text-xs text-gray-500 dark:text-gray-400">Personal Savings & Budget Assistant</p>
                     </div>
                 </div>
@@ -258,7 +265,7 @@
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                             <span>➕</span> Add New Expense
                         </h3>
-                        <form id="expenseForm" class="space-y-4">
+                        <form id="expenseForm" onsubmit="handleExpenseSubmit(event)" class="space-y-4">
                             <div>
                                 <label for="amount" class="block text-xs font-semibold text-gray-600 dark:text-gray-300 mb-1">Amount (₹)</label>
                                 <input type="number" id="amount" step="0.01" min="0.01" placeholder="e.g. 450" required aria-required="true"
@@ -286,17 +293,17 @@
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                             <span>⚙️</span> Budget Settings
                         </h3>
-                        <div class="space-y-4">
+                        <form id="budgetForm" onsubmit="handleBudgetSubmit(event)" class="space-y-4">
                             <div>
                                 <label for="budgetInput" class="block text-xs font-semibold text-gray-600 dark:text-gray-300 mb-1">Monthly Budget Limit (₹)</label>
                                 <input type="number" id="budgetInput" step="100" min="0" placeholder="10000" aria-label="Monthly Budget Target Limit"
                                     class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
                             </div>
-                            <button onclick="updateBudget()" aria-label="Save Monthly Budget Limit"
+                            <button type="submit" aria-label="Save Monthly Budget Limit"
                                 class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-md transition transform active:scale-95">
                                 Update Monthly Budget
                             </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
@@ -382,11 +389,11 @@
             <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Scan the QR code or use the link below on your phone (connected to the same Wi-Fi network):</p>
             
             <div class="bg-white p-3 rounded-2xl shadow-inner inline-block mb-4 border border-gray-200">
-                <img id="mobileQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://finance-agent-gamma-seven.vercel.app" alt="Mobile App QR Code" class="w-40 h-40 mx-auto rounded-lg">
+                <img id="mobileQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=http%3A%2F%2F10.10.10.127%3A5005" alt="Mobile App QR Code" class="w-40 h-40 mx-auto rounded-lg">
             </div>
 
             <div class="bg-gray-100 dark:bg-gray-700/60 p-3 rounded-xl flex items-center justify-between gap-2 mb-4 border border-gray-200 dark:border-gray-600">
-                <span id="mobileLinkText" class="text-xs font-mono text-indigo-600 dark:text-indigo-300 truncate">https://finance-agent-gamma-seven.vercel.app</span>
+                <span id="mobileLinkText" class="text-xs font-mono text-indigo-600 dark:text-indigo-300 truncate">http://10.10.10.127:5005</span>
                 <button onclick="copyMobileLink()" aria-label="Copy mobile app URL to clipboard" class="px-2.5 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold shadow transition">
                     Copy
                 </button>
@@ -408,23 +415,71 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Navigation Landmark & Footer -->
     <footer role="contentinfo" class="w-full bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 text-center text-xs text-gray-500 dark:text-gray-400 mt-12">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>&copy; 2026 AI Personal Finance Agent. All rights reserved.</p>
-            <div class="flex gap-4">
+            <nav aria-label="Footer Navigation" class="flex gap-4">
                 <a href="/privacy" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Privacy Policy</a>
                 <span>&bull;</span>
                 <a href="/terms" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Terms & Conditions</a>
                 <span>&bull;</span>
                 <a href="/about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">About & Contact</a>
-            </div>
+            </nav>
         </div>
     </footer>
+
+    <!-- Mobile Native PWA Auto-Install Floating Banner -->
+    <div id="pwaInstallBanner" class="fixed top-3 left-3 right-3 z-50 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white p-3.5 rounded-2xl shadow-2xl flex items-center justify-between gap-3 border border-white/20 hidden animate-fade-in">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl shadow">
+                📱
+            </div>
+            <div>
+                <p class="text-xs font-bold leading-tight">Install AI Finance Phone App</p>
+                <p class="text-[11px] text-indigo-100">Add to your Home Screen for 1-tap app launcher</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="installPWAApp()" aria-label="Install mobile app on phone" class="px-3.5 py-1.5 bg-white text-indigo-700 font-bold text-xs rounded-xl shadow active:scale-95 transition">
+                Install App
+            </button>
+            <button onclick="dismissPWABanner()" aria-label="Dismiss mobile app prompt" class="p-1 text-white/70 hover:text-white text-lg font-bold">
+                &times;
+            </button>
+        </div>
+    </div>
 
     <script>
         // Set today's date in welcome banner
         document.getElementById('currentDateDisplay').textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        // Native PWA Mobile App Auto-Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (!localStorage.getItem('pwaBannerDismissed')) {
+                document.getElementById('pwaInstallBanner').classList.remove('hidden');
+            }
+        });
+
+        function installPWAApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                    dismissPWABanner();
+                });
+            } else {
+                openMobileModal();
+            }
+        }
+
+        function dismissPWABanner() {
+            localStorage.setItem('pwaBannerDismissed', 'true');
+            document.getElementById('pwaInstallBanner').classList.add('hidden');
+        }
 
         // Cookie Consent Banner Check
         if (!localStorage.getItem('cookieAccepted')) {
@@ -436,14 +491,22 @@
             document.getElementById('cookieBanner').classList.add('hidden');
         }
 
-        function openMobileModal() {
-            const host = window.location.hostname;
-            const port = window.location.port ? `:${window.location.port}` : '';
-            const mobileUrl = `${window.location.protocol}//${host}${port}`;
-            
-            document.getElementById('mobileLinkText').textContent = mobileUrl;
-            document.getElementById('mobileQrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(mobileUrl)}`;
-            document.getElementById('mobileModal').classList.remove('hidden');
+        async function openMobileModal() {
+            let mobileUrl = `http://10.10.10.127:5005`;
+            try {
+                const res = await fetch('/api/mobile_config');
+                const data = await res.json();
+                if (data && data.mobile_url) {
+                    mobileUrl = data.mobile_url;
+                }
+            } catch (err) {}
+
+            const mobileLinkText = document.getElementById('mobileLinkText');
+            const mobileQrCode = document.getElementById('mobileQrCode');
+            if (mobileLinkText) mobileLinkText.textContent = mobileUrl;
+            if (mobileQrCode) mobileQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(mobileUrl)}`;
+            const mobileModal = document.getElementById('mobileModal');
+            if (mobileModal) mobileModal.classList.remove('hidden');
         }
 
         function closeMobileModal() {
