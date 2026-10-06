@@ -66,6 +66,24 @@ async function handleExpenseSubmit(e) {
     return false;
 }
 
+// Toast notification helper
+function showToast(message) {
+    let toast = document.getElementById('appToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'appToast';
+        toast.className = 'fixed bottom-5 right-5 z-50 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 px-5 py-3 rounded-2xl shadow-2xl text-xs font-bold transition transform duration-300 translate-y-10 opacity-0 flex items-center gap-2 border border-gray-700/50';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.remove('translate-y-10', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-10', 'opacity-0');
+    }, 3000);
+}
+
 // Budget Submit Handler
 async function handleBudgetSubmit(e) {
     if (e && e.preventDefault) e.preventDefault();
@@ -102,7 +120,9 @@ async function updateBudget() {
         }
 
         if (response.ok && data.success) {
-            budgetInput.value = '';
+            budgetInput.value = budget;
+            budgetInput.placeholder = budget;
+            showToast(`✅ Monthly budget updated to ₹${budget.toLocaleString('en-IN')}`);
             await loadSummary();
         } else {
             alert('❌ Error updating budget: ' + (data.error || 'Failed to update budget.'));
@@ -179,6 +199,13 @@ async function loadSummary() {
         const remainingVal = Number(data.summary.remaining || 0);
 
         if (budgetDisplay) budgetDisplay.textContent = `₹${budgetVal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        
+        const budgetInput = document.getElementById('budgetInput') || document.getElementById('budget');
+        if (budgetInput && (!budgetInput.value || document.activeElement !== budgetInput)) {
+            budgetInput.value = budgetVal;
+            budgetInput.placeholder = `Current: ₹${budgetVal}`;
+        }
+
         if (spentDisplay) spentDisplay.textContent = `₹${spentVal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         if (remainingDisplay) {
             remainingDisplay.textContent = `₹${remainingVal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
