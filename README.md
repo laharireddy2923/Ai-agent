@@ -4,18 +4,6 @@
 
 An AI-powered Personal Finance & Savings Agent that helps users manage their finances through intelligent expense tracking, automated categorization, personalized insights, and conversational assistance.
 
-**Developed by:**
-- Cherupally Shashank (22VE1A05L0)
-- Ganji Keerthana (22VE1A05M0)
-- Pendyala Bhavana (22VE1A05P6)
-- T Mythri (22VE1A05R5)
-
-**Guide:** Dr. U.M. Fernandes Dimlo  
-**Institution:** Sreyas Institute of Engineering and Technology  
-**Department:** Computer Science and Engineering
-
----
-
 ## 🎯 Features
 
 ### Core Functionality
